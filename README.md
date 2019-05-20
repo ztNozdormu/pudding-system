@@ -12,7 +12,7 @@
 | 模块名称 | 说明 | 端口 | 备注 |
 | :---: | :---: | :---: | :---: |
 | pudding-system-api | system接口 | 无 | 接口 |
-| pudding-system-app | system微服务 | 8001 | 具体服务 |
+| pudding-system-web | system微服务 | 8001 | 提供具体服务 |
 
 ---
 
