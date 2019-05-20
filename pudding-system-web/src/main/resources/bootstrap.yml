@@ -1,12 +1,14 @@
 spring:
   application:
     name: pudding-system
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   profiles:
     active: local
   cloud:
-    config:
-      profile: local
-      label: master
+    nacos:
+      discovery:
+       server-addr: 47.107.170.59:8848
 
 ---
 

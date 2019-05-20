@@ -17,6 +17,7 @@ package com.mohism.pudding.system.web.modular.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mohism.pudding.system.web.modular.entity.SysUser;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -26,6 +27,7 @@ import com.mohism.pudding.system.web.modular.entity.SysUser;
  * @author stylefeng
  * @since 2018-08-26
  */
+@Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }
