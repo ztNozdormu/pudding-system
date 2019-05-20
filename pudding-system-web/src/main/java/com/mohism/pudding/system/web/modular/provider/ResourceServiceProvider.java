@@ -15,8 +15,8 @@
  */
 package com.mohism.pudding.system.web.modular.provider;
 
-import cn.stylefeng.roses.kernel.model.api.ResourceService;
-import cn.stylefeng.roses.kernel.model.resource.ResourceDefinition;
+import com.mohism.pudding.kernel.model.api.ResourceService;
+import com.mohism.pudding.kernel.model.resource.ResourceDefinition;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

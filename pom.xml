@@ -7,16 +7,14 @@
   <groupId>com.mohism.pudding</groupId>
   <artifactId>pudding-system</artifactId>
   <version>0.0.1</version>
+  <packaging>pom</packaging>
+  <name>pudding-system</name>
+  <description>系统管理，包含权限管理，组织架构管理，可同时集成文件，字典，日志管理</description>
+
   <modules>
     <module>pudding-system-interface</module>
     <module>pudding-system-web</module>
   </modules>
-
-  <packaging>pom</packaging>
-  <name>pudding-system</name>
-
-  <description>系统管理，包含权限管理，组织架构管理，可同时集成文件，字典，日志管理</description>
-
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -39,6 +37,11 @@
   </dependencies>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>com.mohism.pudding</groupId>
+        <artifactId>pudding-system-interface</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>com.mohism.pudding</groupId>
         <artifactId>kernel-core</artifactId>
@@ -93,7 +96,14 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Finchley.RELEASE</version>
+        <version>Greenwich.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>0.9.0.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
