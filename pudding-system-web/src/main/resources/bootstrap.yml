@@ -1,11 +1,11 @@
 spring:
   application:
-    name: roses-system
+    name: pudding-system
   profiles:
-    active: @spring.active@
+    active: local
   cloud:
     config:
-      profile: @spring.active@
+      profile: local
       label: master
 
 ---
