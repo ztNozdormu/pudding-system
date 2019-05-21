@@ -9,7 +9,6 @@ spring:
     nacos:
       discovery:
        server-addr: 47.107.170.59:8848
-
 ---
 
 spring:
@@ -18,7 +17,8 @@ spring:
     config:
       enabled: true
       uri: http://127.0.0.1:8002
-
+server:
+  port: 9090
 ---
 
 spring:
