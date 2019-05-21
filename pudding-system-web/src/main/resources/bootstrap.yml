@@ -23,9 +23,12 @@ spring:
 
 spring:
   profiles: dev
+  # 配置中心地址 后续改为applo
   cloud:
     config:
       uri: http://127.0.0.1:8002
+server:
+  port: 8090
 
 ---
 
@@ -61,3 +64,14 @@ spring:
 #    username: root
 #    password: root
 #    data-source-name: otherdb
+###################### mybatis-plus\u9ED8\u8BA4\u914D\u7F6E #######################
+mybatis-plus:
+  mapper-locations: classpath*:**/mapping/*.xml
+aliyun:
+  oss:
+    accessKeyId: LTAIxtMtP3Iq378t
+    accessKeySecret: jdpHSXh4Y2HWXWIs91Kp5ANDrXIB0Y
+    bucketName: hyc-test
+    endpoint: http://oss-cn-shenzhen.aliyuncs.com
+    internetFileUrl: hyc/tmp/
+    expire: 10
