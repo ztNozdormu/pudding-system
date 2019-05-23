@@ -38,6 +38,20 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Greenwich.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>0.9.0.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
         <groupId>com.mohism.pudding</groupId>
         <artifactId>pudding-system-interface</artifactId>
         <version>${project.version}</version>
@@ -92,20 +106,6 @@
         <groupId>com.mohism.pudding</groupId>
         <artifactId>base-log-server</artifactId>
         <version>${kernel.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Greenwich.RELEASE</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-        <version>0.9.0.RELEASE</version>
-        <type>pom</type>
-        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
