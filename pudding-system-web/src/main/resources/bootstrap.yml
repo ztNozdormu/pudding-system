@@ -9,6 +9,9 @@ spring:
     nacos:
       discovery:
        server-addr: 47.107.170.59:8848
+  pudding:
+    log:
+      kafka: false
 ---
 
 spring:
