@@ -16,8 +16,8 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@Table(name = "t_role_permission")
-@TableName("t_role_permission")
+@Table(name = "role_permission")
+@TableName("role_permission")
 @ApiModel(value = "角色权限")
 public class RolePermission extends BaseEntity {
 

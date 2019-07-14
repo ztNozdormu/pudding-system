@@ -1,6 +1,5 @@
 package com.mohism.pudding.system.manager.config;
 
-import com.mohism.pudding.system.manager.core.db.DepartInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,10 +21,10 @@ public class ManagerAutoConfiguration {
 //        return new DictInitializer();
 //    }
 
-    @Bean
-    public DepartInitializer dictTypeInitializer() {
-        return new DepartInitializer();
-    }
+//    @Bean
+//    public DepartInitializer dictTypeInitializer() {
+//        return new DepartInitializer();
+//    }
 
 //    /**
 //     * 控制器

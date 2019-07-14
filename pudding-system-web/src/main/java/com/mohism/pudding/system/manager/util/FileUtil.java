@@ -1,11 +1,13 @@
 package com.mohism.pudding.system.manager.util;
 
-import cn.exrick.xboot.common.constant.SettingConstant;
-import cn.exrick.xboot.common.exception.XbootException;
-import cn.exrick.xboot.modules.base.vo.OssSetting;
+
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.google.gson.Gson;
+import com.mohism.pudding.kernel.model.exception.ServiceException;
+import com.mohism.pudding.system.manager.core.constants.SettingConstant;
+import com.mohism.pudding.system.manager.exception.ManagerExceptionEnum;
+import com.mohism.pudding.system.manager.vo.OssSetting;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -16,7 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 /**
- * @author Exrickx
+ * <p>
+ *  文件工具
+ * </p>
+ *
+ * @author real earth
+ * @since 2019-06-25
  */
 @Component
 @Slf4j
@@ -29,7 +36,7 @@ public class FileUtil {
 
         String v = redisTemplate.opsForValue().get(SettingConstant.LOCAL_OSS);
         if(StrUtil.isBlank(v)){
-            throw new XbootException("您还未配置本地文件存储服务");
+            throw new ServiceException(ManagerExceptionEnum.NO_FILE_OSS);
         }
         return new Gson().fromJson(v, OssSetting.class);
     }
@@ -51,14 +58,14 @@ public class FileUtil {
         }
         File f = new File(path + "/" + key);
         if(f.exists()){
-            throw new XbootException("文件名已存在");
+            throw new ServiceException(ManagerExceptionEnum.FILE_ALREADY_EXIT);
         }
         try {
             file.transferTo(f);
             return path + "/" + key;
         } catch (IOException e) {
             log.error(e.toString());
-            throw new XbootException("上传文件出错");
+            throw new ServiceException(ManagerExceptionEnum.FILE_UPLOAD_ERROR);
         }
     }
 
@@ -89,7 +96,7 @@ public class FileUtil {
             o.close();
         } catch (IOException e) {
             log.error(e.toString());
-            throw new XbootException("读取文件出错");
+            throw new ServiceException(ManagerExceptionEnum.FILE_READ_ERROR);
         }
     }
 
@@ -133,7 +140,7 @@ public class FileUtil {
             return file.getParentFile() + "/" + toKey;
         } catch (IOException e) {
             log.error(e.toString());
-            throw new XbootException("复制文件出错");
+            throw new ServiceException(ManagerExceptionEnum.FILE_COPY_ERROR);
         }
     }
 

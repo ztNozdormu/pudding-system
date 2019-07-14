@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mohism.pudding.system.manager.modular.mapper.UserRoleMapper">
+
+    <select id="findByRoleId" resultType="com.mohism.pudding.system.manager.entity.SysUser">
+      SELECT r.id id,r.user_name userName,r.password password,r.email email,r.nick_name nickName,
+      r.mobile mobile,r.sex sex,r.address address
+      FROM user_role ur
+      LEFT JOIN sys_user u
+      ON ur.user_id = u.id
+      WHERE u.status = 0 and ur.role_id = #{roleId}
+    </select>
+    <select id="findByUserId" resultType="com.mohism.pudding.system.manager.entity.Role">
+      SELECT r.id id, r.role_name,r.role_code, r.data_type
+      FROM user_role ur
+      LEFT JOIN sys_role r
+      ON ur.role_id = r.id
+      WHERE ur.user_Id = #{userId}
+    </select>
+    
+    <select id="findDepIdsByUserId" resultType="java.lang.String">
+        SELECT DISTINCT rd.depart_id
+        FROM role_depart rd
+        WHERE role_id IN
+        ( SELECT ur.role_id FROM user_role ur WHERE ur.user_id = #{userId} )
+    </select>
+</mapper>

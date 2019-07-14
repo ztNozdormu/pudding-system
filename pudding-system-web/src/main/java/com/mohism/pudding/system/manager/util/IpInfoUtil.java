@@ -1,12 +1,12 @@
 package com.mohism.pudding.system.manager.util;
 
 
-import cn.exrick.xboot.common.vo.IpInfo;
-import cn.exrick.xboot.common.vo.IpLocate;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
+import cn.hutool.core.util.StrUtil;
 import com.google.gson.Gson;
+import com.mohism.pudding.system.manager.vo.IpInfo;
+import com.mohism.pudding.system.manager.vo.IpLocate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,15 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-
 /**
- * @author Exrickx
+ * <p>
+ *  ip信息工具
+ * </p>
+ *
+ * @author real earth
+ * @since 2019-06-25
  */
 @Slf4j
 @Component
 public class IpInfoUtil {
 
-    @Value("${xboot.mob.appKey}")
+    @Value("${pudding.mob.appKey}")
     private String appKey;
 
     /**

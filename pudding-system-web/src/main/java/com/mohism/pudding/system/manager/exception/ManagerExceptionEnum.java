@@ -17,7 +17,15 @@ public enum ManagerExceptionEnum implements AbstractBaseExceptionEnum {
     WRONG_STATUS(2113, "状态错误！"),
     LOGIN_COUNT_OUT(21114,"登录错误超次数"),
     NO_SEND_EMAIL(2115,"您还未配置发送邮箱"),
-    NO_QN_OSS(2115,"您还未配置七牛云");
+    NO_QN_OSS(2116,"您还未配置七牛云"),
+    NO_FILE_OSS(2117,"您还未配置本地文件存储服务"),
+    FILE_ALREADY_EXIT(2118,"您还未配置本地文件存储服务"),
+    FILE_UPLOAD_ERROR(2119,"您还未配置本地文件存储服务"),
+    FILE_READ_ERROR(2120,"读取文件出错"),
+    FILE_COPY_ERROR(2121,"复制文件出错"),
+    NO_ALI_SMS(2122,"您还未配置阿里云短信"),
+    NO_MINIO(2123,"您还未配置MINIO"),
+    NO_TX_OSS(2116,"您还未配置腾讯云COS");
 
 
     ManagerExceptionEnum(int code, String message) {

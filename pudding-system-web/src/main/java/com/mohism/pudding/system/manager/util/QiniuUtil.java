@@ -82,7 +82,7 @@ public class QiniuUtil {
             return os.getHttp() + os.getEndpoint() + "/" + putRet.key;
         } catch (QiniuException ex) {
             Response r = ex.response;
-            throw new ServiceException("上传文件出错，请检查七牛云配置，" + r.toString());
+            throw new ServiceException(2056,"上传文件出错，请检查七牛云配置，" + r.toString());
         }
     }
 
@@ -103,7 +103,7 @@ public class QiniuUtil {
             return os.getHttp() + os.getEndpoint() + "/" + putRet.key;
         } catch (QiniuException ex) {
             Response r = ex.response;
-            throw new ServiceException("上传文件出错，请检查七牛云配置，" + r.toString());
+            throw new ServiceException(2023,"上传文件出错，请检查七牛云配置，" + r.toString());
         }
     }
 
@@ -121,7 +121,7 @@ public class QiniuUtil {
             bucketManager.move(os.getBucket(), fromKey, os.getBucket(), toKey);
             return os.getHttp() + os.getEndpoint() + "/" + toKey;
         } catch (QiniuException ex) {
-            throw new ServiceException("重命名文件失败，" + ex.response.toString());
+            throw new ServiceException(2024,"重命名文件失败，" + ex.response.toString());
         }
     }
 
@@ -138,7 +138,7 @@ public class QiniuUtil {
             bucketManager.copy(os.getBucket(), fromKey, os.getBucket(), toKey);
             return os.getHttp() + os.getEndpoint() + "/" + toKey;
         } catch (QiniuException ex) {
-            throw new ServiceException("复制文件失败，" + ex.response.toString());
+            throw new ServiceException(2025,"复制文件失败，" + ex.response.toString());
         }
     }
 
@@ -154,7 +154,7 @@ public class QiniuUtil {
         try {
             bucketManager.delete(os.getBucket(), key);
         } catch (QiniuException ex) {
-            throw new ServiceException("删除文件失败，" + ex.response.toString());
+            throw new ServiceException(2026,"删除文件失败，" + ex.response.toString());
         }
     }
 }

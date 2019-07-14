@@ -1,9 +1,13 @@
 package com.mohism.pudding.system.manager.config.security;
 
 
-import com.mohism.pudding.system.manager.security.jwt.AuthenticationFailHandler;
-import com.mohism.pudding.system.manager.security.jwt.JWTAuthenticationFilter;
-import com.mohism.pudding.system.manager.security.jwt.RestAccessDeniedHandler;
+import com.mohism.pudding.system.manager.config.security.jwt.AuthenticationFailHandler;
+import com.mohism.pudding.system.manager.config.security.jwt.AuthenticationSuccessHandler;
+import com.mohism.pudding.system.manager.config.security.jwt.JWTAuthenticationFilter;
+import com.mohism.pudding.system.manager.config.security.jwt.RestAccessDeniedHandler;
+import com.mohism.pudding.system.manager.config.security.permission.MyFilterSecurityInterceptor;
+import com.mohism.pudding.system.manager.modular.service.SecurityService;
+import com.mohism.pudding.system.manager.modular.service.impl.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -60,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private StringRedisTemplate redisTemplate;
 
     @Autowired
-    private SecurityUtil securityUtil;
+    private SecurityService securityService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -114,6 +118,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class)
                 //添加JWT认证过滤器
                 .addFilter(new JWTAuthenticationFilter(authenticationManager(), tokenRedis, tokenExpireTime, storePerms,
-                        redisTemplate, securityUtil));
+                        redisTemplate, securityService));
     }
 }

@@ -18,8 +18,8 @@ import javax.persistence.Transient;
  */
 @Data
 @Entity
-@Table(name = "t_user_role")
-@TableName("t_user_role")
+@Table(name = "user_role")
+@TableName("user_role")
 @ApiModel(value = "用户角色")
 public class UserRole extends BaseEntity {
 

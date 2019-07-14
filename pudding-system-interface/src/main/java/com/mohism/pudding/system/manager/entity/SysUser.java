@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.mohism.pudding.kernel.base.entity.BaseEntity;
 import com.mohism.pudding.kernel.model.auth.context.CommonConstant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,137 +31,126 @@ import java.util.List;
 @Table(name = "sys_user")
 @TableName("sys_user")
 @ApiModel(value = "角色权限")
-public class SysUser implements Serializable {
+public class SysUser extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-
-//    /**
-//     * 主键id
-//     */
-//    @TableId("USER_ID")
-//    private Long userId;
-//    /**
-//     * 头像
-//     */
-//    @TableField("AVATAR")
-//    private String avatar;
-//    /**
-//     * 账号
-//     */
-//    @TableField("ACCOUNT")
-//    private String account;
-//    /**
-//     * 密码
-//     */
-//    @TableField("PASSWORD")
-//    private String password;
-//    /**
-//     * md5密码盐
-//     */
-//    @TableField("SALT")
-//    private String salt;
-//    /**
-//     * 名字
-//     */
-//    @TableField("NAME")
-//    private String name;
-//    /**
-//     * 生日
-//     */
-//    @TableField("BIRTHDAY")
-//    private Date birthday;
-//    /**
-//     * 性别（M：男 F：女）
-//     */
-//    @TableField("SEX")
-//    private String sex;
-//    /**
-//     * 电子邮件
-//     */
-//    @TableField("EMAIL")
-//    private String email;
-//    /**
-//     * 电话
-//     */
-//    @TableField("PHONE")
-//    private String phone;
-//    /**
-//     * 状态(1：启用  2：冻结  3：删除）
-//     */
-//    @TableField("STATUS")
-//    private Integer status;
-//    /**
-//     * 创建时间
-//     */
-//    @TableField(value = "CREATE_TIME", fill = FieldFill.INSERT)
-//    private Date createTime;
-//    /**
-//     * 更新时间
-//     */
-//    @TableField(value = "UPDATE_TIME", fill = FieldFill.UPDATE)
-//    private Date updateTime;
-
-
+    /**
+     * 用户名（登录账号）
+     */
     @ApiModelProperty(value = "用户名")
     @Column(unique = true, nullable = false)
-    private String username;
-
+    private String userName;
+    /**
+     * 登录密码
+     */
     @ApiModelProperty(value = "密码")
     private String password;
-
+    /**
+     * md5密码盐
+     */
+    private String salt;
+    /**
+     * 昵称
+     */
     @ApiModelProperty(value = "昵称")
     private String nickName;
-
+    /**
+     * 真实姓名
+     */
+    @ApiModelProperty(value = "昵称")
+    private String realName;
+    /**
+     * 手机号
+     */
     @ApiModelProperty(value = "手机")
     private String mobile;
-
+    /**
+     * 邮箱地址
+     */
     @ApiModelProperty(value = "邮件")
     private String email;
-
+    /**
+     * 生日
+     */
+    @ApiModelProperty(value = "生日")
+    private Date birthday;
+    /**
+     *省市县地址（地区码）
+     */
     @ApiModelProperty(value = "省市县地址")
     private String address;
 
+    /**
+     * 身份证号
+     */
+    @ApiModelProperty(value = "身份证号")
+    private String citizenNo;
+   /**
+     * 街道详细地址
+     */
     @ApiModelProperty(value = "街道地址")
     private String street;
-
+    /**
+     * 性别（M：男 F：女）
+     */
     @ApiModelProperty(value = "性别")
     private String sex;
-
+    /**
+     * 密码强度
+     */
     @ApiModelProperty(value = "密码强度")
     @Column(length = 2)
     private String passStrength;
-
+    /**
+     * 用户头像
+     */
     @ApiModelProperty(value = "用户头像")
     @Column(length = 1000)
     private String avatar = CommonConstant.USER_DEFAULT_AVATAR;
-
+    /**
+     * 用户类型 0普通用户 1管理员
+     */
     @ApiModelProperty(value = "用户类型 0普通用户 1管理员")
     private Integer type = CommonConstant.USER_TYPE_NORMAL;
-
+    /**
+     * 状态 默认0正常 -1拉黑
+     */
     @ApiModelProperty(value = "状态 默认0正常 -1拉黑")
     private Integer status = CommonConstant.USER_STATUS_NORMAL;
-
+    /**
+     * 描述/详情/备注
+     */
     @ApiModelProperty(value = "描述/详情/备注")
     private String description;
-
+    /**
+     * 所属一级组织机构Id
+     */
     @ApiModelProperty(value = "所属部门id")
     private String departmentId;
-
+    /**
+     * 所属一级组织机构名称
+     */
     @Transient
     @TableField(exist=false)
     @ApiModelProperty(value = "所属部门名称")
     private String departmentTitle;
-
+    /**
+     *用户拥有角色
+     */
     @Transient
     @TableField(exist=false)
     @ApiModelProperty(value = "用户拥有角色")
     private List<Role> roles;
-
+    /**
+     * 用户拥有的权限
+     */
     @Transient
     @TableField(exist=false)
     @ApiModelProperty(value = "用户拥有的权限")
     private List<Permission> permissions;
-
+    /**
+     * 导入数据时使用的默认角色
+     */
     @Transient
     @TableField(exist=false)
     @ApiModelProperty(value = "导入数据时使用")

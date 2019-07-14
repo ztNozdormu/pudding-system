@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Data
 @Entity
-@TableName("t_permission")
+@TableName("sys_permission")
 @ApiModel(value = "菜单权限")
 public class Permission extends BaseEntity {
 

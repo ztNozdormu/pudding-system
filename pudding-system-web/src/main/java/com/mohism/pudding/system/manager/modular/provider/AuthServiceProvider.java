@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 鉴权服务的提供者
+ * 对外鉴权服务的提供者
  *
  * @author real earth
  * @date 2019-06-30-上午9:05
@@ -23,21 +23,26 @@ public class AuthServiceProvider implements AuthService {
 
     @Override
     public String login(@RequestParam("account") String account, @RequestParam("password") String password) {
-        return sysUserService.login(account, password);
+//        return sysUserService.login(account, password);
+        return null;
     }
 
     @Override
     public boolean checkToken(@RequestParam("token") String token) {
-        return sysUserService.checkToken(token);
+//        return sysUserService.checkToken(token);
+        return false;
     }
 
     @Override
     public void logout(@RequestParam("token") String token) {
-        sysUserService.logout(token);
+//        sysUserService.logout(token);
     }
+
 
     @Override
     public LoginUser getLoginUserByToken(@RequestParam("token") String token) {
-        return sysUserService.getLoginUserByToken(token);
+//        return sysUserService.getLoginUserByToken(token);
+        return null;
     }
+
 }

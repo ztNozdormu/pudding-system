@@ -16,8 +16,8 @@ import javax.persistence.Transient;
  */
 @Data
 @Entity
-@Table(name = "t_message")
-@TableName("t_message")
+@Table(name = "message")
+@TableName("message")
 @ApiModel(value = "消息")
 public class Message extends BaseEntity {
 

@@ -1,8 +1,6 @@
 package com.mohism.pudding.system.manager.util;
 
-import cn.exrick.xboot.common.constant.SettingConstant;
-import cn.exrick.xboot.common.exception.XbootException;
-import cn.exrick.xboot.modules.base.vo.SmsSetting;
+
 import cn.hutool.core.util.StrUtil;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
@@ -13,6 +11,10 @@ import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.google.gson.Gson;
+import com.mohism.pudding.kernel.model.exception.ServiceException;
+import com.mohism.pudding.system.manager.core.constants.SettingConstant;
+import com.mohism.pudding.system.manager.exception.ManagerExceptionEnum;
+import com.mohism.pudding.system.manager.vo.SmsSetting;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -32,7 +34,8 @@ public class SmsUtil {
 
         String v = redisTemplate.opsForValue().get(SettingConstant.ALI_SMS);
         if(StrUtil.isBlank(v)){
-            throw new XbootException("您还未配置阿里云短信");
+
+            throw new ServiceException(ManagerExceptionEnum.NO_ALI_SMS);
         }
         return new Gson().fromJson(v, SmsSetting.class);
     }

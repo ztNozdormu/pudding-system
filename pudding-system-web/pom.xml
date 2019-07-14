@@ -21,10 +21,10 @@
             <groupId>com.mohism.pudding</groupId>
             <artifactId>pudding-system-interface</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.mohism.pudding</groupId>
-            <artifactId>kernel-actuator</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.mohism.pudding</groupId>-->
+            <!--<artifactId>kernel-actuator</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.mohism.pudding</groupId>
             <artifactId>kernel-core</artifactId>
@@ -60,12 +60,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -87,16 +81,16 @@
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-config</artifactId>-->
 <!--        </dependency>-->
-        <!--spring security-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
         <!-- Redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-redis</artifactId>
             <version>1.4.7.RELEASE</version>
+        </dependency>
+        <!-- Websocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <!-- Beetl 模板使用-->
         <dependency>
@@ -115,6 +109,11 @@
             <groupId>com.qiniu</groupId>
             <artifactId>qiniu-java-sdk</artifactId>
             <version>[7.2.0, 7.2.99]</version>
+        </dependency>
+        <!-- Email -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <!-- 阿里云短信 -->
         <dependency>

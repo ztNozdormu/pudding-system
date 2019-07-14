@@ -1,6 +1,9 @@
 package com.mohism.pudding.system.manager.util;
 
 import com.google.gson.Gson;
+import com.mohism.pudding.kernel.model.reqres.response.ErrorResponseData;
+import com.mohism.pudding.kernel.model.reqres.response.ResponseData;
+import com.mohism.pudding.kernel.model.reqres.response.SuccessResponseData;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletOutputStream;
@@ -28,6 +31,27 @@ public class ResponseUtil {
             response.setContentType("application/json;charset=UTF-8");
             out = response.getOutputStream();
             out.write(new Gson().toJson(resultMap).getBytes());
+        } catch (Exception e) {
+            log.error(e + "输出JSON出错");
+        } finally{
+            if(out!=null){
+                try {
+                    out.flush();
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public static void print(HttpServletResponse response,ResponseData responseData){
+
+        ServletOutputStream out = null;
+        try {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json;charset=UTF-8");
+            out = response.getOutputStream();
+            out.write(new Gson().toJson(responseData).getBytes());
         } catch (Exception e) {
             log.error(e + "输出JSON出错");
         } finally{

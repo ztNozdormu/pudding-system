@@ -1,3 +1,2 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.mohism.pudding.base.manager.server.config.ManagerAutoConfiguration
+
+

@@ -2,7 +2,9 @@ package com.mohism.pudding.system.manager.util;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.gson.Gson;
+import com.mohism.pudding.kernel.model.exception.ServiceException;
 import com.mohism.pudding.system.manager.core.constants.SettingConstant;
+import com.mohism.pudding.system.manager.exception.ManagerExceptionEnum;
 import com.mohism.pudding.system.manager.vo.OssSetting;
 import io.minio.MinioClient;
 import io.minio.policy.PolicyType;
@@ -28,7 +30,7 @@ public class MinioUtil {
 
         String v = redisTemplate.opsForValue().get(SettingConstant.MINIO_OSS);
         if(StrUtil.isBlank(v)){
-            throw new XbootException("您还未配置MINIO");
+            throw new ServiceException(ManagerExceptionEnum.NO_MINIO);
         }
         return new Gson().fromJson(v, OssSetting.class);
     }

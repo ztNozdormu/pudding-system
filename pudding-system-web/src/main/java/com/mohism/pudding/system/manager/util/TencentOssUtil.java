@@ -1,10 +1,12 @@
 package com.mohism.pudding.system.manager.util;
 
-import cn.exrick.xboot.common.constant.SettingConstant;
-import cn.exrick.xboot.common.exception.XbootException;
-import cn.exrick.xboot.modules.base.vo.OssSetting;
+
 import cn.hutool.core.util.StrUtil;
 import com.google.gson.Gson;
+import com.mohism.pudding.kernel.model.exception.ServiceException;
+import com.mohism.pudding.system.manager.core.constants.SettingConstant;
+import com.mohism.pudding.system.manager.exception.ManagerExceptionEnum;
+import com.mohism.pudding.system.manager.vo.OssSetting;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.auth.BasicCOSCredentials;
@@ -36,7 +38,7 @@ public class TencentOssUtil {
 
         String v = redisTemplate.opsForValue().get(SettingConstant.TENCENT_OSS);
         if(StrUtil.isBlank(v)){
-            throw new XbootException("您还未配置腾讯云COS");
+            throw new ServiceException(ManagerExceptionEnum.NO_TX_OSS);
         }
         return new Gson().fromJson(v, OssSetting.class);
     }
@@ -119,7 +121,7 @@ public class TencentOssUtil {
             CopyResult copyResult = copy.waitForCopyResult();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new XbootException("复制文件失败");
+            throw new ServiceException(ManagerExceptionEnum.FILE_COPY_ERROR);
         }
         transferManager.shutdownNow();
         cosClient.shutdown();
